@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Einlogenseite</title>
+    <style>
+        * { margin: 0; padding: 0; }
+      canvas {
+      display: block;
+      position: fixed;
+       top: 0;
+      left: 0;
+      z-index: -1;
+    }
+     body {
+    font-family: Arial, sans-serif;
+    color: #0f0;
+    background-color: rgba(92, 88, 88, 0.295);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    background-size: cover;
+    box-sizing: border-box;
+     }
+     .conteiner{
+    position: relative;
+    width: 300%;
+    margin: 0 auto;
+     }
+     .title {
+     position: absolute; 
+     top: -50px;
+     left: 0;
+     right: 0;
+     margin-bottom:20px;
+     text-align: center;
+     font-size: 50px;
+     color: #fff;
+     text-shadow:
+     0 0 7px #73ffa9,
+     0 0 10px #73ffa9,
+     0 0 21px #73ffa9,
+     0 0 42px #73ffa9,
+     0 0 82px #73ffa9,
+     0 0 92px #73ffa9,
+     0 0 102px #73ffa9,
+     0 0 151px #73ffa9;
+     }
+     
+    .login-modal {
+    background: rgba(70, 68, 68, 0.658);
+     padding: 20px;
+     border: 1px solid #0f0;
+     border-radius: 1rem;
+     margin: 0 auto;
+     width: 100%;
+     max-width: 270px;
+     box-shadow: 0 0 15px #0f0;
+     text-align: center;
+    }
+   
+    .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    
+    }
+
+    .modal-header h2 {
+    margin: 0;
+    color: #0a0;
+    text-shadow: 0 0 5px #0a0;
+    font-size: 24px;
+    margin-bottom: 2px;
+    }
+
+    .register-button {
+        padding: 25px;
+        background-color: rgba(131, 139, 131, 0);
+        color: #0f0;
+        border: none;
+        border-radius: 10px; 
+        margin-bottom: 5px;
+        font-size: 20px;
+        transition: background-color 0.3s ease;
+    }
+
+    .register-button:hover{
+    background-color:#0a0;
+    color:#ffffff;
+    }
+    
+    
+    label {
+    text-align: left;
+    margin: 10px 0 5px;
+    display: block;
+    }
+
+    input[type="email"],
+    input[type="password"] {
+    right: 10px;
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #0f0;
+    border-radius: 5px;
+    background: rgb(204, 241, 204);
+    color: rgb(3, 3, 3);
+    }
+
+    
+    .forgot-password {
+    font-size: 13px;
+    display: block;
+    text-align: right;
+    margin:5px 0 10px;
+    gap: 10;
+    text-decoration: underline;
+    color: rgb(229, 255, 115);
+    }  
+
+    .login-button {
+    width: 40%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #0f0;
+    color: black;
+    font-size: 1em;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+
+    .divider {
+    text-align: center;
+    margin: 20px 0;
+    position: relative;
+    font-size: 14px;
+    }
+
+    .divider::before,
+    .divider::after {
+    content: '';
+    display: inline-block;
+    width: 30%;
+    height: 1px;
+    background-color: rgba(245, 255, 108, 0.712);
+    vertical-align: middle;
+    top: 10%;
+    }
+    .divider::before {
+    margin-right: 15px;
+    }
+
+    .divider::after {
+    margin-left: 15px;
+    }
+    
+    .login-btn {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #0f0;
+    border-radius: 5px;
+    color: #0f0;
+    font-size: 1em;
+    cursor: pointer;
+    margin-bottom: 15px;
+    
+    }
+    .login-btn.google {
+    background-color: white;
+    width: 85%;
+    border-color: #4285F4;
+    color: #4285F4;
+    }
+    </style>   
+</head>
+
+<body>
+      <canvas></canvas>   
+      <div class="conteiner">
+        <div class="title">
+        <h2 class="title">Gruppenchat FI AE 7-2408-1</h2>
+        </div>
+         <div class="login-modal">
+          <div class="modal-content">
+               <div class="modal-header">
+                  <h2>Einloggen</h2>
+                  <button class="register-button">Registrieren</button>
+                </div>
+        
+                 <form>
+                   <label for="email">E-Mail-Adresse</label>
+                   <input type="email" id="email" name="email" required>
+
+                   <label for="password">Passwort</label>
+                   <input type="password" id="password" name="password" required>
+                   
+                  <div>
+                   <a href="#" class="forgot-password">Passwort vergessen?</a>
+                   </div>
+
+                       <button type="submit" class="login-button">Einloggen</button> 
+                </form>
+
+                    <div class="divider">
+                          <span>ODER</span>
+                    </div>
+                          
+                     <button class="login-btn google">Mit Google einloggen</button>
+                 </div>
+
+                        
+             </div>
+        </div>
+
+                          <script>
+                            // Initialising der canvas
+                      var canvas = document.querySelector('canvas'),
+                          ctx = canvas.getContext('2d');
+                  
+                      // Einstellung der Größe für die canvas
+                      canvas.width = window.innerWidth;
+                      canvas.height = window.innerHeight;
+                  
+                      // Einstellung letters
+                      var letters = '01';
+                      letters = letters.split('');
+                  
+                      // Einstellung der columns
+                      var fontSize = 10,
+                          columns = canvas.width / fontSize;
+                  
+                      // Einstellung der drops
+                      var drops = [];
+                      for (var i = 0; i < columns; i++) {
+                          drops[i] = 1;
+                      }
+                  
+                      // Einstellung der draw Funktion
+                      function draw() {
+                          ctx.fillStyle = 'rgba(0, 0, 0, .1)';
+                          ctx.fillRect(0, 0, canvas.width, canvas.height);
+                          for (var i = 0; i < drops.length; i++) {
+                              var text = letters[Math.floor(Math.random() * letters.length)];
+                              ctx.fillStyle = 'green';
+                              ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                              drops[i]++;
+                              if (drops[i] * fontSize > canvas.height && Math.random() > .95) {
+                                  drops[i] = 0;
+                              }
+                          }
+                      }
+                  
+                      // Wiederholung der Animation
+                      setInterval(draw, 33);
+                     </script> 
+</body>
+</html>
+                                                           

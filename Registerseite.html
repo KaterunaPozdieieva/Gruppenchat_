@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrieren</title>
+    <style>
+      * { margin: 0; padding: 0; }
+      canvas {
+      display: block;
+      position: fixed;
+       top: 0;
+      left: 0;
+      z-index: -1;
+      }
+
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: rgba(92, 88, 88, 0.295);
+    color: #0a0;
+    background-size: cover;
+}
+
+.container {
+    background: rgba(70, 68, 68, 0.658);
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 300px;
+    box-shadow: 0 0 15px #0f0;
+    text-align: center;
+}
+
+h2 {
+    margin-bottom: 20px;
+    font-size: 2em;
+    color: #0f0;
+    text-shadow: 0 0 5px #0f0;
+}
+
+
+
+label {
+    display: block;
+    text-align: left;
+    margin: 10px 0 5px;
+}
+
+input[type="email"],
+input[type="text"],
+input[type="password"] {
+    right: 10px;
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #0f0;
+    border-radius: 5px;
+    background: rgb(204, 241, 204);
+    color: rgb(3, 3, 3);
+}
+
+.register-btn {
+    width: 40%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #0f0;
+    color: black;
+    font-size: 1em;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+.divider {
+    text-align: center;
+    margin: 30px 0;
+    top: -20px;
+    position: relative;
+    font-size: 14px;
+    }
+
+    .divider::before,
+    .divider::after {
+    content: '';
+    display: inline-block;
+    width: 30%;
+    height: 1px;
+    background-color: rgba(245, 255, 108, 0.712);
+    vertical-align: middle;
+    }
+
+    .divider::before {
+    margin-right: 15px;
+    }
+
+    .divider::after {
+    margin-left: 15px;
+    }
+
+.login-btn {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #0f0;
+    border-radius: 5px;
+    color: #0f0;
+    font-size: 1em;
+    cursor: pointer;
+    margin-bottom: 15px;
+
+}
+.login-btn.google {
+    background-color: white;
+    width: 85%;
+    border-color: #4285F4;
+    color: #4285F4;
+}
+
+    </style>    
+</head>
+
+<body>
+    <canvas></canvas>   
+    <div class="container">
+        <h2>Erstelle dein Konto</h2>
+        <form action="#">
+            <label for="email">E-Mail-Adresse *</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="vorname">Benutzername*</label>
+            <input type="text" id="vorname" name="vorname" required>
+
+            <label for="password">Passwort *</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit" class="register-btn">Registrieren</button>
+        </form>
+
+        <div class="divider">
+            <span>ODER</span>
+            </div>
+
+        <button class="login-btn google">Mit Google einloggen</button>
+
+    </div>
+
+    <script>
+        // Initialising der canvas
+  var canvas = document.querySelector('canvas'),
+      ctx = canvas.getContext('2d');
+
+  // Einstellung der Größe für die canvas
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  // Einstellung letters
+  var letters = '01';
+  letters = letters.split('');
+
+  // Einstellung der columns
+  var fontSize = 10,
+      columns = canvas.width / fontSize;
+
+  // Einstellung der drops
+  var drops = [];
+  for (var i = 0; i < columns; i++) {
+      drops[i] = 1;
+  }
+
+  // Einstellung der draw Funktion
+  function draw() {
+      ctx.fillStyle = 'rgba(0, 0, 0, .1)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      for (var i = 0; i < drops.length; i++) {
+          var text = letters[Math.floor(Math.random() * letters.length)];
+          ctx.fillStyle = 'green';
+          ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+          drops[i]++;
+          if (drops[i] * fontSize > canvas.height && Math.random() > .95) {
+              drops[i] = 0;
+          }
+      }
+  }
+
+  // Wiederholung der Animation
+  setInterval(draw, 33);
+ </script> 
+</body>
+</html>
